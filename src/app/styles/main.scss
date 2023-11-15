@@ -14,8 +14,15 @@ body {
 .app {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border-radius: 8px;
+  align-items: center;
   background: var(--primary-pearl);
   margin: 4% 5%;
+}
+
+.svg-icon {
+  fill: var(--secondary-gray);
+  width: 24px;
+  position: absolute;
+  margin-left: 16px;
+  margin-top: 10px;
 }

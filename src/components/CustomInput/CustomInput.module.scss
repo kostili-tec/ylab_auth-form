@@ -1,0 +1,46 @@
+.inputContainer {
+  position: relative;
+}
+
+.input {
+  background: transparent;
+  color: var(--secondary-white);
+  border: 1px solid var(--secondary-gray);
+  border-radius: 5px;
+  padding: 12px 0 12px 64px;
+  width: 100%;
+  transition: all ease-in 0.2s;
+
+  &:hover {
+    border: 1px solid var(--secondary-lightGray);
+    + .icon {
+      fill: var(--secondary-lightGray);
+    }
+  }
+
+  &::placeholder {
+    color: var(--secondary-gray);
+  }
+
+  &:focus {
+    outline: 0;
+    background: var(--secondary-blue);
+    border: 1px solid var(--secondary-lightGray);
+    &::placeholder {
+      color: var(--secondary-lightGray);
+    }
+    + .icon {
+      fill: var(--secondary-lightGray);
+    }
+  }
+}
+
+.icon {
+  fill: var(--secondary-gray);
+  width: 24px;
+  position: absolute;
+  left: 0;
+  margin-left: 16px;
+  margin-top: 10px;
+  transition: all ease-in 0.2s;
+}
