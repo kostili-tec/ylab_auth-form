@@ -1,9 +1,9 @@
-import { AuthForm } from '../../components/AuthForm/AuthForm';
+import { AuthFormContainer } from '@/components/AuthFormContainer/AuthFormContainer';
 
 export const AuthPage = () => {
   return (
     <>
-      <AuthForm />
+      <AuthFormContainer />
     </>
   );
 };

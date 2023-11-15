@@ -1,0 +1,45 @@
+.greenSvg {
+  width: 454px;
+  height: 492px;
+  transform: rotate(-94.305deg);
+  flex-shrink: 0;
+  position: absolute;
+  transform: translate(-128px, -46%);
+  fill: #43D9AD;
+  filter: blur(87px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blueSvg {
+  width: 454px;
+  height: 492px;
+  transform: rotate(13.508deg);
+  flex-shrink: 0;
+  position: absolute;
+  transform: translate(180px, 22%);
+  fill: #4D5BCE;
+  filter: blur(87px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.animated {
+  animation: blurAnimation 5s infinite ease-in;
+  animation-direction: alternate;
+}
+
+.animatedDelay {
+  animation-delay: 2s;
+}
+
+@keyframes blurAnimation {
+    from {
+      filter: blur(87px);
+    }
+
+    to {
+      filter: blur(112px);
+    }
+}
+

@@ -1,10 +1,8 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-width: 500px;
-  width: 500px;
-  border: 1px solid var(--bg-main-green);
+  justify-content: center;
+  gap: 2rem;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 1rem; 
 }
