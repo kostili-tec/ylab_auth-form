@@ -20,17 +20,20 @@ export const AuthForm = () => {
   return (
     <form className={classes.form}>
       <CustomInput
-        placeholder="Enter your email..."
+        placeholder="// Enter your email..."
         type="email"
         required={true}
         onChange={handleChangeInput}
       />
       <CustomInput
-        placeholder="Enter your password..."
+        placeholder="// Enter your password..."
         type="password"
         required={true}
         onChange={handleChangeInput}
       />
+      <button type="submit" className={classes.submitBtn}>
+        SIGN IN
+      </button>
     </form>
   );
 };

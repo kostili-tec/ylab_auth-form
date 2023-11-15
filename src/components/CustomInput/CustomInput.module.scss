@@ -3,16 +3,17 @@
 }
 
 .input {
-  background: transparent;
+  background: var(--input-bg);
+  box-shadow: 1px 5px 11px 0px var(--box-shadow) inset;  
   color: var(--secondary-white);
-  border: 1px solid var(--secondary-gray);
+  border: 1px solid var(--input-border);
   border-radius: 5px;
   padding: 12px 0 12px 64px;
   width: 100%;
   transition: all ease-in 0.2s;
 
   &:hover {
-    border: 1px solid var(--secondary-lightGray);
+    border: 1px solid var(--input-borderHover);
     + .icon {
       fill: var(--secondary-lightGray);
     }
@@ -24,8 +25,9 @@
 
   &:focus {
     outline: 0;
-    background: var(--secondary-blue);
-    border: 1px solid var(--secondary-lightGray);
+    background: var(----input-focus);
+    box-shadow: 1px 5px 11px 0px var(--box-shadow) inset;
+    border: 1px solid var(--input-borderHover);
     &::placeholder {
       color: var(--secondary-lightGray);
     }
