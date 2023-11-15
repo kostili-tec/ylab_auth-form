@@ -1,0 +1,21 @@
+@import './variables/globals.scss';
+@import './normalize.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-main-black);
+  font-family: var(--fira-code-family);
+  color: var(--secondary-white);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--primary-pearl);
+  margin: 4% 5%;
+}
