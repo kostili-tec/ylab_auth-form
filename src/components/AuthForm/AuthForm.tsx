@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { CustomInput } from '../CustomInput/CustomInput';
 import { emulateServerResponse } from '@/service/AuthService';
 import { isValidUser } from '@/utils/utils';
+import { TypeUser } from '@/types/types';
 import classes from './AuthForm.module.scss';
 
 export const AuthForm = () => {
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState<TypeUser>({
     email: '',
     password: '',
   });
@@ -23,8 +24,7 @@ export const AuthForm = () => {
     e.preventDefault();
     if (isValidUser(inputs)) {
       try {
-        const { email, password } = inputs;
-        const result = await emulateServerResponse(email, password);
+        const result = await emulateServerResponse(inputs);
         console.log(result);
       } catch (error) {
         console.error(error);
