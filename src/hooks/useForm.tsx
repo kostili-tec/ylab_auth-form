@@ -2,7 +2,12 @@ import { useState } from 'react';
 
 import { isValidEmail, isValidPassword, isValidUser } from '@/utils/utils';
 import { emulateServerResponse } from '@/service/AuthService';
-import { TypeUser } from '@/types/types';
+import { EnumPopupMessages, TypeUser } from '@/types/types';
+
+interface status {
+  type: EnumPopupMessages;
+  isShoving: boolean;
+}
 
 export const useForm = () => {
   const [inputs, setInputs] = useState<TypeUser>({
@@ -13,6 +18,11 @@ export const useForm = () => {
   const [isValidInput, setIsValidInput] = useState({
     email: true,
     password: true,
+  });
+
+  const [popupStatus, setPopupStatus] = useState<status>({
+    type: EnumPopupMessages.DISABLED,
+    isShoving: false,
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -45,11 +55,22 @@ export const useForm = () => {
     if (isValidUser(inputs)) {
       try {
         const result = await emulateServerResponse(inputs);
+        if (result.success === true) {
+          setPopupStatus({ isShoving: true, type: EnumPopupMessages.SUCCES } as status);
+        } else {
+          setPopupStatus({ isShoving: true, type: EnumPopupMessages.ERROR } as status);
+        }
         console.log(result);
       } catch (error) {
+        setPopupStatus({ isShoving: true, type: EnumPopupMessages.ERROR } as status);
         console.error(error);
       } finally {
         setIsLoading(false);
+        // костыль
+        setTimeout(
+          () => setPopupStatus({ isShoving: false, type: EnumPopupMessages.DISABLED } as status),
+          5000
+        );
       }
     } else {
       setIsLoading(false);
@@ -59,6 +80,7 @@ export const useForm = () => {
   return {
     isValidInput,
     isLoading,
+    popupStatus,
     handleSubmit,
     handleChangeInput,
   };

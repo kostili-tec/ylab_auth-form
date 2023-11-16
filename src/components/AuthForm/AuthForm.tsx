@@ -1,12 +1,15 @@
 import { CustomInput } from '../CustomInput/CustomInput';
 import { LoadingSpinner } from '../Icons/LoadingSpinner/LoadingSpinner';
 import { ValidateMessage } from '../ValidateMessage/ValidateMessage';
+import { Popup } from '../Popup/Popup';
 
 import { useForm } from '@/hooks/useForm';
+import { EnumPopupMessages } from '@/types/types';
 import classes from './AuthForm.module.scss';
 
 export const AuthForm = () => {
-  const { isLoading, handleChangeInput, handleSubmit, isValidInput } = useForm();
+  const { isLoading, isValidInput, popupStatus, handleChangeInput, handleSubmit } = useForm();
+  const { isShoving, type } = popupStatus;
 
   return (
     <form className={classes.form} onSubmit={(e) => void handleSubmit(e)}>
@@ -34,6 +37,7 @@ export const AuthForm = () => {
           SIGN IN
         </button>
       )}
+      {isShoving && <Popup type={type as EnumPopupMessages} />}
     </form>
   );
 };
