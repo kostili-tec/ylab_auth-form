@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { CustomInput } from '../CustomInput/CustomInput';
+import { emulateServerResponse } from '../../service/AuthService';
 import classes from './AuthForm.module.scss';
 
 export const AuthForm = () => {
@@ -17,8 +18,19 @@ export const AuthForm = () => {
     });
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const { email, password } = inputs;
+      const result = await emulateServerResponse(email, password);
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={(e) => void handleSubmit(e)}>
       <CustomInput
         placeholder="// Enter your email..."
         type="email"
