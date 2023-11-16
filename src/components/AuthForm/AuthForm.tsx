@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { CustomInput } from '../CustomInput/CustomInput';
+import { LoadingSpinner } from '../Icons/LoadingSpinner/LoadingSpinner';
 import { emulateServerResponse } from '@/service/AuthService';
 import { isValidUser } from '@/utils/utils';
 import { TypeUser } from '@/types/types';
@@ -12,6 +13,8 @@ export const AuthForm = () => {
     password: '',
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setInputs({
@@ -22,14 +25,18 @@ export const AuthForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     if (isValidUser(inputs)) {
       try {
         const result = await emulateServerResponse(inputs);
         console.log(result);
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     } else {
+      setIsLoading(false);
       console.error('Invalid user data');
     }
   };
@@ -48,9 +55,13 @@ export const AuthForm = () => {
         required={true}
         onChange={handleChangeInput}
       />
-      <button type="submit" className={classes.submitBtn}>
-        SIGN IN
-      </button>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <button type="submit" className={classes.submitBtn}>
+          SIGN IN
+        </button>
+      )}
     </form>
   );
 };
