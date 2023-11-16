@@ -1,0 +1,9 @@
+.message {
+  color: var(--accent-pink);
+  font-size: 14px;
+}
+
+.messageContainer {
+  position: absolute;
+  transform: translate(8px, 2px)
+}

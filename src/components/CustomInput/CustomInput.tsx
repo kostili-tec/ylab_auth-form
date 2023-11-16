@@ -1,4 +1,4 @@
-import { FC, HTMLInputTypeAttribute } from 'react';
+import { FC, HTMLInputTypeAttribute, ReactNode } from 'react';
 
 import { LoginIcon } from '../Icons/LoginIcon';
 import { PasswordIcon } from '../Icons/PasswordIcon';
@@ -8,11 +8,12 @@ interface CustomInputProps {
   placeholder: string;
   required: boolean;
   type: HTMLInputTypeAttribute;
+  errorMessage: ReactNode;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const CustomInput: FC<CustomInputProps> = (props) => {
-  const { placeholder, required, type, onChange } = props;
+  const { placeholder, required, type, errorMessage, onChange } = props;
 
   const getIcon = (type: HTMLInputTypeAttribute) => {
     switch (type) {
@@ -35,6 +36,7 @@ export const CustomInput: FC<CustomInputProps> = (props) => {
         autoComplete="on"
       />
       {getIcon(type)}
+      {errorMessage}
     </div>
   );
 };

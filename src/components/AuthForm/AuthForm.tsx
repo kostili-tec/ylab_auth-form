@@ -2,8 +2,10 @@ import { useState } from 'react';
 
 import { CustomInput } from '../CustomInput/CustomInput';
 import { LoadingSpinner } from '../Icons/LoadingSpinner/LoadingSpinner';
+import { ValidateMessage } from '../ValidateMessage/ValidateMessage';
+
 import { emulateServerResponse } from '@/service/AuthService';
-import { isValidUser } from '@/utils/utils';
+import { isValidEmail, isValidPassword, isValidUser } from '@/utils/utils';
 import { TypeUser } from '@/types/types';
 import classes from './AuthForm.module.scss';
 
@@ -13,14 +15,33 @@ export const AuthForm = () => {
     password: '',
   });
 
+  const [isValidInput, setIsValidInput] = useState({
+    email: true,
+    password: true,
+  });
+
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setInputs({
-      ...inputs,
+    setInputs((state) => ({
+      ...state,
       [name]: value,
-    });
+    }));
+    if (name === 'email') {
+      const testEmail = isValidEmail(value);
+      setIsValidInput((state) => ({
+        ...state,
+        [name]: testEmail,
+      }));
+    }
+    if (name === 'password') {
+      const testPassword = isValidPassword(value);
+      setIsValidInput((state) => ({
+        ...state,
+        [name]: testPassword,
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -37,7 +58,6 @@ export const AuthForm = () => {
       }
     } else {
       setIsLoading(false);
-      console.error('Invalid user data');
     }
   };
 
@@ -48,12 +68,17 @@ export const AuthForm = () => {
         type="email"
         required={true}
         onChange={handleChangeInput}
+        errorMessage={<ValidateMessage message="Incorrect Email" isValid={isValidInput.email} />}
       />
+
       <CustomInput
         placeholder="// Enter your password..."
         type="password"
         required={true}
         onChange={handleChangeInput}
+        errorMessage={
+          <ValidateMessage message="Incorrect Password" isValid={isValidInput.password} />
+        }
       />
       {isLoading ? (
         <LoadingSpinner />

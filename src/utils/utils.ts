@@ -5,3 +5,7 @@ const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$
 
 export const isValidUser = ({ email, password }: TypeUser) =>
   emailRegex.test(email) && passwordRegex.test(password);
+
+export const isValidEmail = (email: string) => emailRegex.test(email);
+
+export const isValidPassword = (password: string) => passwordRegex.test(password);
