@@ -10,5 +10,3 @@ export enum EnumPopupMessages {
   ERROR = 'Error',
   DISABLED = 'Disabled',
 }
-
-export type TypePopupMessages = 'Succes' | 'Error' | 'Disable';
