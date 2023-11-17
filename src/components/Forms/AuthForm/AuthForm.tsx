@@ -14,7 +14,8 @@ interface AuthFormProps {
 }
 
 export const AuthForm: FC<AuthFormProps> = ({ setForm }) => {
-  const { isLoading, isValidInput, popupStatus, handleChangeInput, handleSubmit } = useForm();
+  const { isLoading, isValidLoginInputs, popupStatus, handleChangeInput, handleSubmitLoginForm } =
+    useForm();
   const { isShoving, type } = popupStatus;
 
   const handleClickLink = () => {
@@ -22,13 +23,15 @@ export const AuthForm: FC<AuthFormProps> = ({ setForm }) => {
   };
 
   return (
-    <form className={classes.form} onSubmit={(e) => void handleSubmit(e)}>
+    <form className={classes.form} onSubmit={(e) => void handleSubmitLoginForm(e)}>
       <CustomInput
         placeholder="// Enter your email..."
         type="email"
         required={true}
         onChange={handleChangeInput}
-        errorMessage={<ValidateMessage message="Incorrect Email" isValid={isValidInput.email} />}
+        errorMessage={
+          <ValidateMessage message="Incorrect Email" isValid={isValidLoginInputs.email} />
+        }
       />
 
       <CustomInput
@@ -37,7 +40,7 @@ export const AuthForm: FC<AuthFormProps> = ({ setForm }) => {
         required={true}
         onChange={handleChangeInput}
         errorMessage={
-          <ValidateMessage message="Incorrect Password" isValid={isValidInput.password} />
+          <ValidateMessage message="Incorrect Password" isValid={isValidLoginInputs.password} />
         }
       />
       {isLoading ? (

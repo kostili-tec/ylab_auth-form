@@ -1,12 +1,12 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import { CustomInput } from '../../CustomInput/CustomInput';
 import { ValidateMessage } from '../../ValidateMessage/ValidateMessage';
 import { LoadingSpinner } from '../../Icons/LoadingSpinner/LoadingSpinner';
+import { Popup } from '../../Popup/Popup';
 
-import { emulateServerResponseEmail } from '@/service/AuthService';
-import { isValidEmail } from '@/utils/utils';
-import { EnumForms } from '@/types/types';
+import { useForm } from '@/hooks/useForm';
+import { EnumForms, EnumPopupMessages } from '@/types/types';
 import classes from '../styles/sharedForm.module.scss';
 
 interface ResetFormProps {
@@ -14,47 +14,27 @@ interface ResetFormProps {
 }
 
 export const ResetForm: FC<ResetFormProps> = ({ setForm }) => {
-  const [resetInput, setResetInput] = useState('');
-  const [isValidInput, setIsValidInput] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-
-    setResetInput(value);
-    const testEmail = isValidEmail(value);
-    setIsValidInput(testEmail);
-  };
+  const {
+    isValidResetInput,
+    handleSubmitResetForm,
+    handleChangeResetInput,
+    isLoading,
+    popupStatus,
+  } = useForm();
+  const { isShoving, type } = popupStatus;
 
   const handleClickLink = () => {
     setForm(EnumForms.LOGIN);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    if (isValidInput) {
-      try {
-        const result = await emulateServerResponseEmail(resetInput);
-        console.log(result);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    } else {
-      setIsLoading(false);
-    }
-  };
-
   return (
-    <form className={classes.form} onSubmit={(e) => void handleSubmit(e)}>
+    <form className={classes.form} onSubmit={(e) => void handleSubmitResetForm(e)}>
       <CustomInput
         placeholder="// Enter your email..."
         type="email"
         required={true}
-        onChange={handleChangeInput}
-        errorMessage={<ValidateMessage message="Incorrect Email" isValid={isValidInput} />}
+        onChange={handleChangeResetInput}
+        errorMessage={<ValidateMessage message="Incorrect Email" isValid={isValidResetInput} />}
       />
       {isLoading ? (
         <LoadingSpinner />
@@ -67,6 +47,7 @@ export const ResetForm: FC<ResetFormProps> = ({ setForm }) => {
       <a onClick={handleClickLink} className={classes.link}>
         Go back
       </a>
+      {isShoving && <Popup type={type as EnumPopupMessages} />}
     </form>
   );
 };
