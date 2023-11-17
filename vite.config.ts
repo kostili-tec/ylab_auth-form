@@ -7,6 +7,7 @@ import { resolve } from 'path';
 export const pathResolver = (p: string) => resolve(__dirname, '.', p);
 
 export default defineConfig({
+  base: '/ylab_auth-form/',
   plugins: [react(), eslint()],
   css: {
     postcss: {
