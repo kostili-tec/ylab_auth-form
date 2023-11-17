@@ -5,6 +5,15 @@
   gap: 2rem;
   border-radius: 5px;
   width: 370px;
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    margin: 0 1rem;
+  }
+
+  @media screen and (max-width: 424px) {
+   font-size: 12px;
+  }
 }
 
 .submitBtn {
@@ -18,7 +27,12 @@
   height: 39px;
   cursor: pointer;
   transition: ease-in 0.2s;
+
   &:hover {
     background: var(--accent-darkBlue);
+  }
+
+  &:active {
+    transform: scale(1.2);
   }
 }

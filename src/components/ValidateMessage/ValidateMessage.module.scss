@@ -1,6 +1,12 @@
 .message {
   color: var(--accent-pink);
   font-size: 14px;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+  @media screen and (max-width: 424px) {
+    font-size: 10px;
+  }
 }
 
 .messageContainer {

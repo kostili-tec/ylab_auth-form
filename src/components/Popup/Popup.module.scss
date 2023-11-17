@@ -8,6 +8,10 @@
   width: 120px;
   animation: slideInOut 5s ease-in-out;
   transform: translateX(140px);
+
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
 }
 
 .succes {

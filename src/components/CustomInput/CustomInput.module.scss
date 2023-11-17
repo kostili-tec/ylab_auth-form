@@ -39,6 +39,20 @@
   &::-webkit-autofill {
     background: transparent;
   }
+
+  @media screen and (max-width: 767px) {
+    padding: 12px 10px 12px 52px;
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (max-width: 424px) {
+    padding: 12px 6px 12px 32px;
+    &::placeholder {
+      font-size: 10px;
+    }
+  }
 }
 
 .input:-webkit-autofill,
@@ -57,4 +71,9 @@
   margin-left: 16px;
   margin-top: 10px;
   transition: all ease-in 0.2s;
+
+  @media screen and (max-width: 424px) {
+    width: 18px;
+    margin-left: 10px;
+  }
 }
