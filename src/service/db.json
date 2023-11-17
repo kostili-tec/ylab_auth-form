@@ -1,12 +1,12 @@
 [
   { "email": "john.doe@example.com", "password": "Pa$$w0rd1" },
   { "email": "alice.smith@example.com", "password": "Secret@123" },
-  { "email": "bob.jones@example.com", "password": "BobRules!789" },
-  { "email": "emily.white@example.com", "password": "Sunshine42" },
-  { "email": "alex.black@example.com", "password": "BlackCoffee#56" },
-  { "email": "sara.green@example.com", "password": "GreenTea$99" },
-  { "email": "peter.blue@example.com", "password": "BlueSky*123" },
-  { "email": "olivia.brown@example.com", "password": "BrownSugar@456" },
-  { "email": "william.gray@example.com", "password": "GrayGhost!789" },
-  { "email": "ella.purple@example.com", "password": "PurpleRain$42" }
+  { "email": "bob.jones@gmail.com", "password": "BobRules!789" },
+  { "email": "emily.white@gmail.com", "password": "Sun#shine42" },
+  { "email": "alex.black@mail.com", "password": "BlackCoffee#56" },
+  { "email": "sara.green@mail.com", "password": "GreenTea$99" },
+  { "email": "peter.blue@mail.ru", "password": "BlueSky*123" },
+  { "email": "olivia.brown@mail.ru", "password": "BrownSugar@456" },
+  { "email": "william.gray@yandex.ru", "password": "GrayGhost!789" },
+  { "email": "ella.purple@yandex.ru", "password": "PurpleRain$42" }
 ]
