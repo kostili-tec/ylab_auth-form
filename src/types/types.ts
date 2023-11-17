@@ -10,3 +10,8 @@ export enum EnumPopupMessages {
   ERROR = 'Error',
   DISABLED = 'Disabled',
 }
+
+export enum EnumForms {
+  LOGIN = 'login',
+  RESET = 'reset',
+}

@@ -36,3 +36,12 @@
     transform: scale(1.2);
   }
 }
+
+.link {
+  color: var(--secondary-lightGray);
+  transition: ease-in 0.2s;
+  cursor: pointer;
+  &:hover {
+    color: var(--accent-green);
+  }
+}
