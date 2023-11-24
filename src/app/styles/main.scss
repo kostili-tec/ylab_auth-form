@@ -1,0 +1,42 @@
+@import './variables/globals.scss';
+@import './normalize.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-main-black);
+  font-family: var(--fira-code-family);
+  color: var(--secondary-white);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(1,22,39);
+  background-size: 300% 300%;
+  background-image:  linear-gradient(43deg, rgba(1,22,39,1) 0%, rgba(8,33,42,1) 21%, rgba(18,47,45,1) 48%, rgba(16,25,49,1) 81%, rgba(15,13,52,1) 100%);
+	animation: AnimateBG 20s ease infinite;
+}
+
+.svg-icon {
+  fill: var(--secondary-gray);
+  width: 24px;
+  position: absolute;
+  margin-left: 16px;
+  margin-top: 10px;
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

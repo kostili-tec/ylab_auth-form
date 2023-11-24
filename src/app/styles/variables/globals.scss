@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  /* Font Family */
+  --fira-code-family: 'Fira Code', monospace;
+   
+  /* Colors */
+  --primary-blacked: #01080E;
+  --primary-pearl: #011627;
+  --primary-rich: #011221;
+  
+  --secondary-gray: #607B96;
+  --secondary-lightGray: #ccc;
+  --secondary-green: #3C9D93;
+  --secondary-lavender: #4D5BCE;
+  --secondary-white: #FFFFFF;
+  --secondary-blue: #286293;
+  
+  --accent-orange: #FEA55F;
+  --accent-green: #43D9AD;
+  --accent-pink: #E99287;
+  --accent-magenta: #C98BDF;
+  --accent-darkBlue:  #08141D;
+
+  --input-bg: rgba(1, 22, 39, 0.84);
+  --input-border: rgba(67, 148, 116, 0.63);
+  --input-borderHover: rgba(67, 148, 116, 0.856);
+  --input-focus: #08141D;
+
+  --button-bg: #05202e;
+
+  --box-shadow: rgba(2, 18, 27, 0.71);
+
+  --bg-main-black: #010C15;
+  --bg-main-green: #1E2D3D;
+}
